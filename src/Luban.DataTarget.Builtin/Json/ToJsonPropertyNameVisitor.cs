@@ -27,7 +27,17 @@ public class ToJsonPropertyNameVisitor : IDataFuncVisitor<string>
         return type.Value.ToString();
     }
 
+    public string Accept(DUInt type)
+    {
+        return type.Value.ToString();
+    }
+
     public string Accept(DLong type)
+    {
+        return type.Value.ToString();
+    }
+
+    public string Accept(DULong type)
     {
         return type.Value.ToString();
     }

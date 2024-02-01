@@ -1,26 +1,33 @@
 using Luban.TypeVisitors;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Luban.Types;
 
 public class TLong : TType
 {
-    public static TLong Create(bool isNullable, Dictionary<string, string> tags, bool isBigInt)
+    string sInType = "";
+    public static TLong Create(bool isNullable, Dictionary<string, string> tags, string inType)
     {
-        return new TLong(isNullable, tags, isBigInt);
+        return new TLong(isNullable, tags, inType);
     }
 
-    public override string TypeName => "long";
+    public override string TypeName => sInType;
 
-    public bool IsBigInt { get; }
-
-    private TLong(bool isNullable, Dictionary<string, string> tags, bool isBigInt) : base(isNullable, tags)
+    private TLong(bool isNullable, Dictionary<string, string> tags, string inType) : base(isNullable, tags)
     {
-        IsBigInt = isBigInt;
+        sInType = inType;
     }
 
     public override bool TryParseFrom(string s)
     {
-        return long.TryParse(s, out _);
+        if (TypeName.IndexOf('u') < 0)
+        {
+            return long.TryParse(s, out _);
+        }
+        else
+        {
+            return ulong.TryParse(s, out _);
+        }
     }
 
     public override void Apply<T>(ITypeActionVisitor<T> visitor, T x)

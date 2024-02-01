@@ -31,7 +31,17 @@ public class ResDataVisitor : IDataActionVisitor<TType, List<ResourceInfo>>
 
     }
 
+    public void Accept(DUInt type, TType x, List<ResourceInfo> y)
+    {
+
+    }
+
     public void Accept(DLong type, TType x, List<ResourceInfo> y)
+    {
+
+    }
+
+    public void Accept(DULong type, TType x, List<ResourceInfo> y)
     {
 
     }

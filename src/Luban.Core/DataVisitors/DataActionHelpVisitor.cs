@@ -37,7 +37,17 @@ public class DataActionHelpVisitor<T> : IDataActionVisitor<T>
         _underlyingVisitor.Accept(type, x);
     }
 
+    public void Accept(DUInt type, T x)
+    {
+        _underlyingVisitor.Accept(type, x);
+    }
+
     public void Accept(DLong type, T x)
+    {
+        _underlyingVisitor.Accept(type, x);
+    }
+
+    public void Accept(DULong type, T x)
     {
         _underlyingVisitor.Accept(type, x);
     }
@@ -153,7 +163,17 @@ public class DataActionHelpVisitor<T1, T2> : IDataActionVisitor<T1, T2>
         _underlyingVisitor.Accept(type, x, y);
     }
 
+    public void Accept(DUInt type, T1 x, T2 y)
+    {
+        _underlyingVisitor.Accept(type, x, y);
+    }
+
     public void Accept(DLong type, T1 x, T2 y)
+    {
+        _underlyingVisitor.Accept(type, x, y);
+    }
+
+    public void Accept(DULong type, T1 x, T2 y)
     {
         _underlyingVisitor.Accept(type, x, y);
     }

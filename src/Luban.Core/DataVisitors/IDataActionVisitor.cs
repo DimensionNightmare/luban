@@ -13,7 +13,11 @@ public interface IDataActionVisitor<T>
 
     void Accept(DInt type, T x);
 
+    void Accept(DUInt type, T x);
+
     void Accept(DLong type, T x);
+	
+    void Accept(DULong type, T x);
 
     void Accept(DFloat type, T x);
 
@@ -46,7 +50,11 @@ public interface IDataActionVisitor<T1, T2>
 
     void Accept(DInt type, T1 x, T2 y);
 
+    void Accept(DUInt type, T1 x, T2 y);
+
     void Accept(DLong type, T1 x, T2 y);
+
+    void Accept(DULong type, T1 x, T2 y);
 
     void Accept(DFloat type, T1 x, T2 y);
 
@@ -80,7 +88,11 @@ public interface IDataActionVisitor2<T>
 
     void Accept(DInt data, TType type, T x);
 
+    void Accept(DUInt data, TType type, T x);
+
     void Accept(DLong data, TType type, T x);
+
+    void Accept(DULong data, TType type, T x);
 
     void Accept(DFloat data, TType type, T x);
 
@@ -113,7 +125,11 @@ public interface IDataActionVisitor2<T1, T2>
 
     void Accept(DInt data, TType type, T1 x, T2 y);
 
+    void Accept(DUInt data, TType type, T1 x, T2 y);
+
     void Accept(DLong data, TType type, T1 x, T2 y);
+
+    void Accept(DULong data, TType type, T1 x, T2 y);
 
     void Accept(DFloat data, TType type, T1 x, T2 y);
 

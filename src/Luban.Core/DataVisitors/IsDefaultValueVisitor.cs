@@ -27,7 +27,17 @@ public class IsDefaultValueVisitor : IDataFuncVisitor<bool>
         return type.Value == 0;
     }
 
+    public bool Accept(DUInt type)
+    {
+        return type.Value == 0;
+    }
+
     public bool Accept(DLong type)
+    {
+        return type.Value == 0;
+    }
+
+    public bool Accept(DULong type)
     {
         return type.Value == 0;
     }

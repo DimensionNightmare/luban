@@ -4,20 +4,29 @@ namespace Luban.Types;
 
 public class TInt : TType
 {
-    public static TInt Create(bool isNullable, Dictionary<string, string> tags)
+    string sInType = "";
+    public static TInt Create(bool isNullable, Dictionary<string, string> tags, string inType)
     {
-        return new TInt(isNullable, tags);
+        return new TInt(isNullable, tags, inType);
     }
 
-    public override string TypeName => "int";
+    public override string TypeName => sInType;
 
-    private TInt(bool isNullable, Dictionary<string, string> tags) : base(isNullable, tags)
+    private TInt(bool isNullable, Dictionary<string, string> tags, string sInType) : base(isNullable, tags)
     {
+        this.sInType = sInType;
     }
 
     public override bool TryParseFrom(string s)
     {
-        return int.TryParse(s, out _);
+        if (TypeName.IndexOf('u') < 0)
+        {
+            return int.TryParse(s, out _);
+        }
+        else
+        {
+            return uint.TryParse(s, out _);
+        }
     }
 
     public override void Apply<T>(ITypeActionVisitor<T> visitor, T x)

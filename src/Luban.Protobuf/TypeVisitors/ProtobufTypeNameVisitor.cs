@@ -25,12 +25,12 @@ public class ProtobufTypeNameVisitor : ITypeFuncVisitor<string>
 
     public string Accept(TInt type)
     {
-        return "int32";
+        return type.TypeName;
     }
 
     public string Accept(TLong type)
     {
-        return "int64";
+        return type.TypeName;
     }
 
     public string Accept(TFloat type)

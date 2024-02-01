@@ -26,7 +26,17 @@ public class IsSimpleLiteralDataVisitor : IDataFuncVisitor<bool>
         return true;
     }
 
+    public bool Accept(DUInt type)
+    {
+        return true;
+    }
+
     public bool Accept(DLong type)
+    {
+        return true;
+    }
+
+    public bool Accept(DULong type)
     {
         return true;
     }

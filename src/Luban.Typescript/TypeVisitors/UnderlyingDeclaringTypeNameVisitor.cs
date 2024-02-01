@@ -29,7 +29,7 @@ public class UnderlyingDeclaringTypeNameVisitor : ITypeFuncVisitor<string>
 
     public string Accept(TLong type)
     {
-        return type.IsBigInt ? "bigint" : "number";
+        return "number";
     }
 
     public string Accept(TFloat type)

@@ -323,23 +323,19 @@ public class DefAssembly
             case "bool":
                 return TBool.Create(nullable, tags);
             case "uint8":
-            case "byte":
                 return TByte.Create(nullable, tags);
             case "int16":
-            case "short":
                 return TShort.Create(nullable, tags);
             case "int32":
-            case "int":
-                return TInt.Create(nullable, tags);
+                return TInt.Create(nullable, tags, type);
+            case "uint32":
+                return TInt.Create(nullable, tags, type);
             case "int64":
-            case "long":
-                return TLong.Create(nullable, tags, false);
-            case "bigint":
-                return TLong.Create(nullable, tags, true);
-            case "float32":
+                return TLong.Create(nullable, tags, type);
+            case "uint64":
+                return TLong.Create(nullable, tags, type);
             case "float":
                 return TFloat.Create(nullable, tags);
-            case "float64":
             case "double":
                 return TDouble.Create(nullable, tags);
             case "string":
@@ -347,7 +343,6 @@ public class DefAssembly
             case "text":
                 tags.Add("text", "1");
                 return TString.Create(nullable, tags);
-            case "time":
             case "datetime":
                 return TDateTime.Create(nullable, tags);
             default:

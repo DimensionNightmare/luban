@@ -31,7 +31,17 @@ public class BsonDataVisitor : IDataActionVisitor<BsonDataWriter>
         x.WriteValue(type.Value);
     }
 
+    public void Accept(DUInt type, BsonDataWriter x)
+    {
+        x.WriteValue(type.Value);
+    }
+
     public void Accept(DLong type, BsonDataWriter x)
+    {
+        x.WriteValue(type.Value);
+    }
+
+    public void Accept(DULong type, BsonDataWriter x)
     {
         x.WriteValue(type.Value);
     }

@@ -12,7 +12,11 @@ public interface IDataFuncVisitor<TR>
 
     TR Accept(DInt type);
 
+    TR Accept(DUInt type);
+
     TR Accept(DLong type);
+
+    TR Accept(DULong type);
 
     TR Accept(DFloat type);
 
@@ -45,7 +49,11 @@ public interface IDataFuncVisitor<T, TR>
 
     TR Accept(DInt type, T x);
 
+    TR Accept(DUInt type, T x);
+
     TR Accept(DLong type, T x);
+
+    TR Accept(DULong type, T x);
 
     TR Accept(DFloat type, T x);
 
@@ -77,7 +85,12 @@ public interface IDataFuncVisitor<T1, T2, TR>
     TR Accept(DShort type, T1 x, T2 y);
 
     TR Accept(DInt type, T1 x, T2 y);
+
+    TR Accept(DUInt type, T1 x, T2 y);
+
     TR Accept(DLong type, T1 x, T2 y);
+
+    TR Accept(DULong type, T1 x, T2 y);
 
     TR Accept(DFloat type, T1 x, T2 y);
 

@@ -32,7 +32,17 @@ public class JsonDataVisitor : IDataActionVisitor<Utf8JsonWriter>
         x.WriteNumberValue(type.Value);
     }
 
+    public void Accept(DUInt type, Utf8JsonWriter x)
+    {
+        x.WriteNumberValue(type.Value);
+    }
+
     public void Accept(DLong type, Utf8JsonWriter x)
+    {
+        x.WriteNumberValue(type.Value);
+    }
+
+    public void Accept(DULong type, Utf8JsonWriter x)
     {
         x.WriteNumberValue(type.Value);
     }

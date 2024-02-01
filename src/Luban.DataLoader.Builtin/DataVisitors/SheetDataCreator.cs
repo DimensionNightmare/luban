@@ -89,7 +89,16 @@ class SheetDataCreator : ITypeFuncVisitor<RowColumnSheet, TitleRow, DType>
             ThrowIfNonEmpty(row);
             return DInt.Default;
         }
-        return DInt.ValueOf(int.Parse(x.ToString()));
+
+        if (type.TypeName.IndexOf('u') < 0)
+        {
+            return DInt.ValueOf(int.Parse(x.ToString()));
+        }
+        else
+        {
+            return DUInt.ValueOf(uint.Parse(x.ToString()));
+        }
+        
     }
 
     public DType Accept(TLong type, RowColumnSheet sheet, TitleRow row)
@@ -104,7 +113,16 @@ class SheetDataCreator : ITypeFuncVisitor<RowColumnSheet, TitleRow, DType>
             ThrowIfNonEmpty(row);
             return DLong.Default;
         }
-        return DLong.ValueOf(long.Parse(x.ToString()));
+
+        if (type.TypeName.IndexOf('u') < 0)
+        {
+            return DLong.ValueOf(long.Parse(x.ToString()));
+        }
+        else
+        {
+            return DULong.ValueOf(ulong.Parse(x.ToString()));
+        }
+        
     }
 
     public DType Accept(TFloat type, RowColumnSheet sheet, TitleRow row)

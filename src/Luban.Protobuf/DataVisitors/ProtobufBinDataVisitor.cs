@@ -32,9 +32,19 @@ public class ProtobufBinDataVisitor : IDataActionVisitor<CodedOutputStream>
         x.WriteInt32(type.Value);
     }
 
+    public void Accept(DUInt type, CodedOutputStream x)
+    {
+        x.WriteUInt32(type.Value);
+    }
+
     public void Accept(DLong type, CodedOutputStream x)
     {
         x.WriteInt64(type.Value);
+    }
+
+    public void Accept(DULong type, CodedOutputStream x)
+    {
+        x.WriteUInt64(type.Value);
     }
 
     public void Accept(DFloat type, CodedOutputStream x)
