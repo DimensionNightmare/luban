@@ -35,7 +35,7 @@ message {{typeName}} {
 
 {{~for table in __tables~}}
 message {{full_name table}} {
-    repeated {{declaring_type_name table.value_ttype}} data_list = 1 [packed = false];
+    map<{{declaring_type_name table.index_field.ctype}}, {{declaring_type_name table.value_ttype}}> data_map = 1 [packed = false];
 }
 {{~end~}}
 

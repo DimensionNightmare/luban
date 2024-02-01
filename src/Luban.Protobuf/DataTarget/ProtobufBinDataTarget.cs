@@ -10,7 +10,7 @@ namespace Luban.Protobuf.DataTarget;
 public class ProtobufBinDataTarget : DataTargetBase
 {
     protected override string OutputFileExt => "bytes";
-
+    
     public void WriteList(DefTable table, List<Record> datas, MemoryStream x)
     {
         var cos = new CodedOutputStream(x);
@@ -22,10 +22,34 @@ public class ProtobufBinDataTarget : DataTargetBase
         cos.Flush();
     }
 
+    public void WriteMap(DefTable table, List<Record> datas, MemoryStream x)
+    {
+        if(datas.Count == 0) return;
+
+        var cos = new CodedOutputStream(x);
+        var kType = table.IndexField.CType.Apply(ProtobufWireTypeVisitor.Ins);
+        var vType = datas[0].Data.TType.Apply(ProtobufWireTypeVisitor.Ins);
+        
+        foreach (var d in datas)
+        {
+            cos.WriteTag(1, WireFormat.WireType.LengthDelimited);
+            var ms = new MemoryStream();
+            var temp = new CodedOutputStream(ms);
+            temp.WriteTag(1, kType);
+            d.Data.GetField(table.Index).Apply(ProtobufBinDataVisitor.Ins, temp);
+            temp.WriteTag(2, vType);
+            d.Data.Apply(ProtobufBinDataVisitor.Ins, temp);
+            temp.Flush();
+            ms.Seek(0, SeekOrigin.Begin);
+            cos.WriteBytes(ByteString.FromStream(ms));
+        }
+        cos.Flush();
+    }
+
     public override OutputFile ExportTable(DefTable table, List<Record> records)
     {
         var ss = new MemoryStream();
-        WriteList(table, records, ss);
+        WriteMap(table, records, ss);
         ss.Flush();
         return new OutputFile()
         {
