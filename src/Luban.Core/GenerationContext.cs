@@ -101,7 +101,12 @@ public class GenerationContext
         {
             if (!refTypes.ContainsKey(t.FullName))
             {
-                if (t is DefBean bean && NeedExportNotDefault(t.Groups))
+                if(!NeedExportNotDefault(t.Groups))
+                {
+                    continue;
+                }
+
+                if (t is DefBean bean)
                 {
                     TBean.Create(false, bean, null).Apply(RefTypeVisitor.Ins, refTypes);
                 }
