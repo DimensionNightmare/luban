@@ -19,6 +19,9 @@
       <None Update="Templates\pb\schema.sbn">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="Templates\pb\schema_db.sbn">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

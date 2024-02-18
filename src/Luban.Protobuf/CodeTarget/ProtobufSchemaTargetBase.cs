@@ -24,7 +24,8 @@ public abstract class ProtobufSchemaTargetBase : AllInOneTemplateCodeTargetBase
     protected override string GenerateSchema(GenerationContext ctx)
     {
         var writer = new CodeWriter();
-        var template = GetTemplate($"schema");
+        string extend = EnvManager.Current.GetOptionOrDefault("", $"sbnFileExtend",  false, "");
+        var template = GetTemplate($"schema" + extend);
         var tplCtx = CreateTemplateContext(template);
         tplCtx.PushGlobal(new ProtobufCommonTemplateExtension());
         OnCreateTemplateContext(tplCtx);
