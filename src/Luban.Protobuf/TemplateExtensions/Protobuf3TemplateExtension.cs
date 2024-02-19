@@ -32,4 +32,25 @@ public class Protobuf3TemplateExtension : ScriptObject
             return "";
         }
     }
+
+    public static string PreExtend(Dictionary<string, string> extends)
+    {
+        if (extends.Count == 0)
+        {
+            return "";       
+        }
+
+        string str = "";
+
+        foreach (var pair in extends)
+        {
+            str += string.Format("({0})={1}", pair.Key, pair.Value);
+            if(pair.Value != extends.Last().Value)
+            {
+                str += ",";
+            }
+        }
+
+        return $"[{str}]";
+    }
 }
