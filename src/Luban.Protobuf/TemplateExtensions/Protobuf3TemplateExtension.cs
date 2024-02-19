@@ -35,7 +35,7 @@ public class Protobuf3TemplateExtension : ScriptObject
 
     public static string PreExtend(Dictionary<string, string> extends)
     {
-        if (extends.Count == 0)
+        if (extends == null || extends.Count == 0)
         {
             return "";       
         }

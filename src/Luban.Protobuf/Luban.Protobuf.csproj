@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
@@ -16,10 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Templates\pb\schema.sbn">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Templates\pb\schema_db.sbn">
+      <None Update="Templates\pb\*.sbn">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

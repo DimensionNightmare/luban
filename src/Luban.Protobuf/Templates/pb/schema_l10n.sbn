@@ -1,6 +1,6 @@
 syntax = "{{__syntax}}";
 
-import "DbExtend.proto";
+import "Common.proto";
 
 package {{__namespace}};
 
@@ -29,7 +29,7 @@ message {{typeName}} {
     }
 {{~else~}}
     {{~for f in bean.hierarchy_export_fields ~}}
-    {{pre_decorator f.ctype}} {{declaring_type_name f.ctype}} {{f.name}} = {{f.auto_id}} {{suffix_options f.ctype}} {{ pre_extend f.tags}};
+    {{pre_decorator f.ctype}} {{declaring_type_name f.ctype}} {{f.name}} = {{f.auto_id}} {{suffix_options f.ctype}};
     {{~end~}}
 {{~end~}}
 }
