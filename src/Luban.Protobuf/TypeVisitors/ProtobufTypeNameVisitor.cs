@@ -55,7 +55,7 @@ public class ProtobufTypeNameVisitor : ITypeFuncVisitor<string>
 
     public string Accept(TDateTime type)
     {
-        return "int64";
+        return "double";
     }
 
     public string Accept(TBean type)

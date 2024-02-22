@@ -44,7 +44,7 @@ public class Protobuf3TemplateExtension : ScriptObject
 
         foreach (var pair in extends)
         {
-            str += string.Format("({0})={1}", pair.Key, pair.Value);
+            str += string.Format("{0}={1}", pair.Key, pair.Value);
             if(pair.Value != extends.Last().Value)
             {
                 str += ",";
