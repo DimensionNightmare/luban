@@ -1,6 +1,6 @@
 syntax = "{{__syntax}}";
 
-import "Common.proto";
+import "Common/Common.proto";
 
 package {{__namespace}};
 
