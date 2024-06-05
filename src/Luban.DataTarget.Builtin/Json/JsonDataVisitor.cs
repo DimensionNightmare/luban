@@ -32,17 +32,7 @@ public class JsonDataVisitor : IDataActionVisitor<Utf8JsonWriter>
         x.WriteNumberValue(type.Value);
     }
 
-    public void Accept(DUInt type, Utf8JsonWriter x)
-    {
-        x.WriteNumberValue(type.Value);
-    }
-
     public void Accept(DLong type, Utf8JsonWriter x)
-    {
-        x.WriteNumberValue(type.Value);
-    }
-
-    public void Accept(DULong type, Utf8JsonWriter x)
     {
         x.WriteNumberValue(type.Value);
     }
@@ -69,7 +59,7 @@ public class JsonDataVisitor : IDataActionVisitor<Utf8JsonWriter>
 
     public virtual void Accept(DDateTime type, Utf8JsonWriter x)
     {
-        x.WriteNumberValue(type.UnixTimeOfCurrentContext);
+        x.WriteNumberValue(type.UnixTimeOfCurrentContext());
     }
 
     public virtual void Accept(DBean type, Utf8JsonWriter x)
@@ -139,5 +129,15 @@ public class JsonDataVisitor : IDataActionVisitor<Utf8JsonWriter>
             x.WriteEndArray();
         }
         x.WriteEndArray();
+    }
+
+    public void Accept(DUInt type, Utf8JsonWriter x)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Accept(DULong type, Utf8JsonWriter x)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -94,4 +94,19 @@ public class DUInt : DType<uint>
         }
         throw new System.NotSupportedException();
     }
+
+    public override TR Apply<TR>(IDataFuncVisitor2<TR> visitor, TType type)
+    {
+        return visitor.Accept(this, type);
+    }
+
+    public override TR Apply<T, TR>(IDataFuncVisitor2<T, TR> visitor, TType type, T x)
+    {
+        return visitor.Accept(this, type, x);
+    }
+
+    public override TR Apply<T1, T2, TR>(IDataFuncVisitor2<T1, T2, TR> visitor, TType type, T1 x, T2 y)
+    {
+        return visitor.Accept(this, type, x, y);
+    }
 }

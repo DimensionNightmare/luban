@@ -31,17 +31,7 @@ public class BsonDataVisitor : IDataActionVisitor<BsonDataWriter>
         x.WriteValue(type.Value);
     }
 
-    public void Accept(DUInt type, BsonDataWriter x)
-    {
-        x.WriteValue(type.Value);
-    }
-
     public void Accept(DLong type, BsonDataWriter x)
-    {
-        x.WriteValue(type.Value);
-    }
-
-    public void Accept(DULong type, BsonDataWriter x)
     {
         x.WriteValue(type.Value);
     }
@@ -68,7 +58,7 @@ public class BsonDataVisitor : IDataActionVisitor<BsonDataWriter>
 
     public virtual void Accept(DDateTime type, BsonDataWriter x)
     {
-        x.WriteValue(type.UnixTimeOfCurrentContext);
+        x.WriteValue(type.UnixTimeOfCurrentContext());
     }
 
     public virtual void Accept(DBean type, BsonDataWriter x)
@@ -138,5 +128,15 @@ public class BsonDataVisitor : IDataActionVisitor<BsonDataWriter>
             x.WriteEndArray();
         }
         x.WriteEndArray();
+    }
+
+    public void Accept(DUInt type, BsonDataWriter x)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Accept(DULong type, BsonDataWriter x)
+    {
+        throw new NotImplementedException();
     }
 }

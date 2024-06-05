@@ -27,17 +27,7 @@ public class ToJsonPropertyNameVisitor : IDataFuncVisitor<string>
         return type.Value.ToString();
     }
 
-    public string Accept(DUInt type)
-    {
-        return type.Value.ToString();
-    }
-
     public string Accept(DLong type)
-    {
-        return type.Value.ToString();
-    }
-
-    public string Accept(DULong type)
     {
         return type.Value.ToString();
     }
@@ -90,5 +80,15 @@ public class ToJsonPropertyNameVisitor : IDataFuncVisitor<string>
     public string Accept(DMap type)
     {
         throw new NotSupportedException();
+    }
+
+    public string Accept(DUInt type)
+    {
+        throw new NotImplementedException();
+    }
+
+    public string Accept(DULong type)
+    {
+        throw new NotImplementedException();
     }
 }

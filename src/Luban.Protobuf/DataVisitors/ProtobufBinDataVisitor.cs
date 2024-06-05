@@ -64,7 +64,7 @@ public class ProtobufBinDataVisitor : IDataActionVisitor<CodedOutputStream>
 
     public void Accept(DDateTime type, CodedOutputStream x)
     {
-        x.WriteInt64(type.UnixTimeOfCurrentContext);
+        x.WriteInt64(type.UnixTimeOfCurrentContext());
     }
 
     public void Accept(DString type, CodedOutputStream x)
@@ -96,7 +96,7 @@ public class ProtobufBinDataVisitor : IDataActionVisitor<CodedOutputStream>
         int index = 0;
         foreach (var field in type.Fields)
         {
-            var defField = (DefField)defFields[index++];
+            var defField = defFields[index++];
             if (!defField.NeedExport())
             {
                 continue;

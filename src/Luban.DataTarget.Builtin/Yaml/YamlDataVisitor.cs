@@ -43,17 +43,7 @@ public class YamlDataVisitor : IDataFuncVisitor<YamlNode>
         return ToPlainNode(type.Value.ToString());
     }
 
-    public YamlNode Accept(DUInt type)
-    {
-        return ToPlainNode(type.Value.ToString());
-    }
-
     public YamlNode Accept(DLong type)
-    {
-        return ToPlainNode(type.Value.ToString());
-    }
-
-    public YamlNode Accept(DULong type)
     {
         return ToPlainNode(type.Value.ToString());
     }
@@ -80,7 +70,7 @@ public class YamlDataVisitor : IDataFuncVisitor<YamlNode>
 
     public YamlNode Accept(DDateTime type)
     {
-        return ToPlainNode(type.UnixTimeOfCurrentContext.ToString());
+        return ToPlainNode(type.UnixTimeOfCurrentContext().ToString());
     }
 
     public YamlNode Accept(DBean type)
@@ -148,5 +138,15 @@ public class YamlDataVisitor : IDataFuncVisitor<YamlNode>
             seqNode.Add(e);
         }
         return seqNode;
+    }
+
+    public YamlNode Accept(DUInt type)
+    {
+        throw new NotImplementedException();
+    }
+
+    public YamlNode Accept(DULong type)
+    {
+        throw new NotImplementedException();
     }
 }

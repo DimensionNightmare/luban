@@ -112,3 +112,4 @@ public interface IDataFuncVisitor<T1, T2, TR>
 
     TR Accept(DMap type, T1 x, T2 y);
 }
+

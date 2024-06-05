@@ -6,7 +6,6 @@ using Luban.Datas;
 using Luban.DataVisitors;
 using Luban.Defs;
 using Luban.Utils;
-using YamlDotNet.Core.Tokens;
 
 namespace Luban.DataExporter.Builtin.Xml;
 
@@ -34,19 +33,9 @@ public class XmlDataVisitor : IDataActionVisitor<XmlWriter>
         w.WriteValue(type.Value);
     }
 
-    public void Accept(DUInt type, XmlWriter w)
-    {
-        w.WriteValue(type.Value);
-    }
-
     public void Accept(DLong type, XmlWriter w)
     {
         w.WriteValue(type.Value);
-    }
-
-    public void Accept(DULong type, XmlWriter w)
-    {
-        w.WriteString(XmlConvert.ToString(type.Value));
     }
 
     public void Accept(DFloat type, XmlWriter w)
@@ -71,7 +60,7 @@ public class XmlDataVisitor : IDataActionVisitor<XmlWriter>
 
     public void Accept(DDateTime type, XmlWriter w)
     {
-        w.WriteValue(type.UnixTimeOfCurrentContext);
+        w.WriteValue(type.UnixTimeOfCurrentContext());
     }
 
     public void Accept(DBean type, XmlWriter w)
@@ -140,5 +129,15 @@ public class XmlDataVisitor : IDataActionVisitor<XmlWriter>
             w.WriteEndElement();
             w.WriteEndElement();
         }
+    }
+
+    public void Accept(DUInt type, XmlWriter x)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Accept(DULong type, XmlWriter x)
+    {
+        throw new NotImplementedException();
     }
 }

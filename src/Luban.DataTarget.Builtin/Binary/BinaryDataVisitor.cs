@@ -30,19 +30,9 @@ public class BinaryDataVisitor : IDataActionVisitor<ByteBuf>
         x.WriteInt(type.Value);
     }
 
-    public void Accept(DUInt type, ByteBuf x)
-    {
-        x.WriteInt(((int)type.Value));
-    }
-
     public void Accept(DLong type, ByteBuf x)
     {
         x.WriteLong(type.Value);
-    }
-
-    public void Accept(DULong type, ByteBuf x)
-    {
-        x.WriteLong(((long)type.Value));
     }
 
     public void Accept(DFloat type, ByteBuf x)
@@ -67,7 +57,7 @@ public class BinaryDataVisitor : IDataActionVisitor<ByteBuf>
 
     public void Accept(DDateTime type, ByteBuf x)
     {
-        x.WriteLong(type.UnixTimeOfCurrentContext);
+        x.WriteLong(type.UnixTimeOfCurrentContext());
     }
 
     public void Accept(DBean type, ByteBuf x)
@@ -139,5 +129,15 @@ public class BinaryDataVisitor : IDataActionVisitor<ByteBuf>
             e.Key.Apply(this, x);
             e.Value.Apply(this, x);
         }
+    }
+
+    public void Accept(DUInt type, ByteBuf x)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Accept(DULong type, ByteBuf x)
+    {
+        throw new NotImplementedException();
     }
 }

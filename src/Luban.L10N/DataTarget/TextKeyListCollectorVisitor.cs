@@ -35,17 +35,7 @@ public class TextKeyListCollectorVisitor : IDataActionVisitor2<TextKeyCollection
 
     }
 
-    public void Accept(DUInt data, TType type, TextKeyCollection x)
-    {
-
-    }
-
     public void Accept(DLong data, TType type, TextKeyCollection x)
-    {
-
-    }
-
-    public void Accept(DULong data, TType type, TextKeyCollection x)
     {
 
     }
@@ -101,5 +91,15 @@ public class TextKeyListCollectorVisitor : IDataActionVisitor2<TextKeyCollection
     public void Accept(DMap data, TType type, TextKeyCollection x)
     {
 
+    }
+
+    public void Accept(DUInt data, TType type, TextKeyCollection x)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Accept(DULong data, TType type, TextKeyCollection x)
+    {
+        throw new NotImplementedException();
     }
 }

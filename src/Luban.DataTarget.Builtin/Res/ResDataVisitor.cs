@@ -31,17 +31,7 @@ public class ResDataVisitor : IDataActionVisitor<TType, List<ResourceInfo>>
 
     }
 
-    public void Accept(DUInt type, TType x, List<ResourceInfo> y)
-    {
-
-    }
-
     public void Accept(DLong type, TType x, List<ResourceInfo> y)
-    {
-
-    }
-
-    public void Accept(DULong type, TType x, List<ResourceInfo> y)
     {
 
     }
@@ -127,5 +117,15 @@ public class ResDataVisitor : IDataActionVisitor<TType, List<ResourceInfo>>
             k.Apply(this, mtype.KeyType, y);
             v.Apply(this, mtype.ValueType, y);
         }
+    }
+
+    public void Accept(DUInt type, TType x, List<ResourceInfo> y)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Accept(DULong type, TType x, List<ResourceInfo> y)
+    {
+        throw new NotImplementedException();
     }
 }
