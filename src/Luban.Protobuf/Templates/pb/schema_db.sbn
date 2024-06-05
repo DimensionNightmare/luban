@@ -1,5 +1,6 @@
 syntax = "{{__syntax}}";
 
+import "Common/Common.proto";
 import "Common/DbExtend.proto";
 
 package {{__namespace}};

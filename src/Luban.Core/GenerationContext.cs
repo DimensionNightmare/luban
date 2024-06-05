@@ -104,18 +104,23 @@ public class GenerationContext
     {
         var refTypes = new Dictionary<string, DefTypeBase>();
         var types = Assembly.TypeList;
+
+        RefTypeVisitor.Ins.Groups = Target.Groups;
+
         foreach (var t in types)
         {
-            if (!refTypes.ContainsKey(t.FullName))
+        	if(!NeedExportNotDefault(t.Groups))
             {
-                if (t is DefBean bean && NeedExportNotDefault(t.Groups))
-                {
-                    TBean.Create(false, bean, null).Apply(RefTypeVisitor.Ins, refTypes);
-                }
-                else if (t is DefEnum && NeedExportNotDefault(t.Groups))
-                {
-                    refTypes.Add(t.FullName, t);
-                }
+				continue;
+			}
+
+			if (t is DefBean bean)
+			{
+				TBean.Create(false, bean, null).Apply(RefTypeVisitor.Ins, refTypes);
+			}
+			else if (t is DefEnum)
+			{
+				refTypes.Add(t.FullName, t);
             }
         }
 

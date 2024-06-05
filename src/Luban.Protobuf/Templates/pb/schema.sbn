@@ -1,5 +1,7 @@
 syntax = "{{__syntax}}";
 
+import "Common/Common.proto";
+
 package {{__namespace}};
 
 {{~for enum in __enums

@@ -7,6 +7,8 @@ class RefTypeVisitor : ITypeActionVisitor<Dictionary<string, DefTypeBase>>
 {
     public static RefTypeVisitor Ins { get; } = new();
 
+    public List<string> Groups;
+
     public void Accept(TBool type, Dictionary<string, DefTypeBase> x)
     {
 
@@ -44,6 +46,11 @@ class RefTypeVisitor : ITypeActionVisitor<Dictionary<string, DefTypeBase>>
 
     public void Accept(TEnum type, Dictionary<string, DefTypeBase> x)
     {
+        if (!Groups.Any(type.DefEnum.Groups.Contains))
+        {
+            return;
+        }
+
         x.TryAdd(type.DefEnum.FullName, type.DefEnum);
     }
 
@@ -78,6 +85,12 @@ class RefTypeVisitor : ITypeActionVisitor<Dictionary<string, DefTypeBase>>
     public void Accept(TBean type, Dictionary<string, DefTypeBase> x)
     {
         var root = (DefBean)type.DefBean.RootDefType;
+
+        if (type.DefBean.Groups.Count > 0 && !Groups.Any(type.DefBean.Groups.Contains))
+        {
+            return;
+        }
+		
         Walk(root, x);
     }
 
