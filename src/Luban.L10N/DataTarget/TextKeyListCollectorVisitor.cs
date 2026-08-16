@@ -111,4 +111,12 @@ public class TextKeyListCollectorVisitor : IDataActionVisitor2<TextKeyCollection
     {
 
     }
+
+    public void Accept(DUInt32 data, TType type, TextKeyCollection x)
+    {
+    }
+
+    public void Accept(DUInt64 data, TType type, TextKeyCollection x)
+    {
+    }
 }

@@ -200,4 +200,14 @@ class XmlDataCreator : ITypeFuncVisitor<XElement, DefAssembly, DType>
     {
         return DataUtil.CreateDateTime(x.Value);
     }
+
+    public DType Accept(TUInt32 type, XElement x, DefAssembly ass)
+    {
+        return DUInt32.ValueOf(uint.Parse(x.Value.Trim()));
+    }
+
+    public DType Accept(TUInt64 type, XElement x, DefAssembly ass)
+    {
+        return DUInt64.ValueOf(ulong.Parse(x.Value.Trim()));
+    }
 }

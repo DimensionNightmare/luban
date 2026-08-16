@@ -53,6 +53,10 @@ public interface ITypeActionVisitor<T>
     void Accept(TSet type, T x);
 
     void Accept(TMap type, T x);
+
+    void Accept(TUInt32 type, T x);
+
+    void Accept(TUInt64 type, T x);
 }
 
 public interface ITypeActionVisitor<T1, T2>
@@ -86,4 +90,8 @@ public interface ITypeActionVisitor<T1, T2>
     void Accept(TSet type, T1 x, T2 y);
 
     void Accept(TMap type, T1 x, T2 y);
+
+    void Accept(TUInt32 type, T1 x, T2 y);
+
+    void Accept(TUInt64 type, T1 x, T2 y);
 }

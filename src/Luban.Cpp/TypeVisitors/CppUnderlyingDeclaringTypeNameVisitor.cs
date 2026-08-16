@@ -102,4 +102,14 @@ public class CppUnderlyingDeclaringTypeNameVisitor : ITypeFuncVisitor<string>
     {
         return $"::luban::HashMap<{type.KeyType.Apply(this)}, {type.ValueType.Apply(this)}>";
     }
+
+    public string Accept(TUInt32 type)
+    {
+        return "::luban::uint32";
+    }
+
+    public string Accept(TUInt64 type)
+    {
+        return "::luban::uint64";
+    }
 }

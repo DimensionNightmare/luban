@@ -1094,6 +1094,16 @@ public sealed class ByteBuf : ICloneable, IEquatable<ByteBuf>
         }
     }
 
+    public void WriteUInt32(uint x)
+    {
+        WriteUint(x);
+    }
+
+    public void WriteUInt64(ulong x)
+    {
+        WriteUlong(x);
+    }
+
     // 以下是一些特殊类型
 
     public void WriteComplex(Complex x)

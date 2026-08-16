@@ -53,6 +53,12 @@ public interface ITypeFuncVisitor<TR>
     TR Accept(TSet type);
 
     TR Accept(TMap type);
+
+    // default implementations for new unsigned types
+    TR Accept(TUInt32 type) => default!;
+
+    TR Accept(TUInt64 type) => default!;
+
 }
 
 public interface ITypeFuncVisitor<T, TR>
@@ -86,6 +92,10 @@ public interface ITypeFuncVisitor<T, TR>
     TR Accept(TSet type, T x);
 
     TR Accept(TMap type, T x);
+
+    TR Accept(TUInt32 type, T x) => default!;
+
+    TR Accept(TUInt64 type, T x) => default!;
 }
 
 public interface ITypeFuncVisitor<T, T2, TR>
@@ -119,6 +129,10 @@ public interface ITypeFuncVisitor<T, T2, TR>
     TR Accept(TSet type, T x, T2 y);
 
     TR Accept(TMap type, T x, T2 y);
+
+    TR Accept(TUInt32 type, T x, T2 y) => default!;
+
+    TR Accept(TUInt64 type, T x, T2 y) => default!;
 }
 
 public interface ITypeFuncVisitor<T, T2, T3, TR>
@@ -152,6 +166,10 @@ public interface ITypeFuncVisitor<T, T2, T3, TR>
     TR Accept(TSet type, T x, T2 y, T3 z);
 
     TR Accept(TMap type, T x, T2 y, T3 z);
+
+    TR Accept(TUInt32 type, T x, T2 y, T3 z) => default!;
+
+    TR Accept(TUInt64 type, T x, T2 y, T3 z) => default!;
 }
 
 public interface ITypeFuncVisitor<T, T2, T3, T4, TR>
@@ -185,4 +203,8 @@ public interface ITypeFuncVisitor<T, T2, T3, T4, TR>
     TR Accept(TSet type, T x, T2 y, T3 z, T4 w);
 
     TR Accept(TMap type, T x, T2 y, T3 z, T4 w);
+
+    TR Accept(TUInt32 type, T x, T2 y, T3 z, T4 w) => default!;
+
+    TR Accept(TUInt64 type, T x, T2 y, T3 z, T4 w) => default!;
 }

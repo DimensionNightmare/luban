@@ -215,4 +215,14 @@ class YamlDataCreator : ITypeFuncVisitor<YamlNode, DefAssembly, DType>
     {
         return DataUtil.CreateDateTime(GetLowerTextValue(x));
     }
+
+    public DType Accept(TUInt32 type, YamlNode x, DefAssembly y)
+    {
+        return DUInt32.ValueOf(uint.Parse(GetLowerTextValue(x)));
+    }
+
+    public DType Accept(TUInt64 type, YamlNode x, DefAssembly y)
+    {
+        return DUInt64.ValueOf(ulong.Parse(GetLowerTextValue(x)));
+    }
 }

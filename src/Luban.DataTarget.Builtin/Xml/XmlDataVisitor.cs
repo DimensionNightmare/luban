@@ -148,4 +148,14 @@ public class XmlDataVisitor : IDataActionVisitor<XmlWriter>
             w.WriteEndElement();
         }
     }
+
+    public void Accept(DUInt32 type, XmlWriter w)
+    {
+        w.WriteValue(type.Value);
+    }
+
+    public void Accept(DUInt64 type, XmlWriter w)
+    {
+        w.WriteValue((long)type.Value);
+    }
 }

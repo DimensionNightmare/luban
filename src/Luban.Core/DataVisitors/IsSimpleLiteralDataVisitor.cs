@@ -100,4 +100,14 @@ public class IsSimpleLiteralDataVisitor : IDataFuncVisitor<bool>
     {
         return false;
     }
+
+    public bool Accept(DUInt32 type)
+    {
+        return true;
+    }
+
+    public bool Accept(DUInt64 type)
+    {
+        return true;
+    }
 }

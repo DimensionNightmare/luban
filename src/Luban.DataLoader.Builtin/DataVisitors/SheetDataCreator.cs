@@ -558,4 +558,43 @@ class SheetDataCreator : ITypeFuncVisitor<RowColumnSheet, TitleRow, DType>
         }
         throw new Exception();
     }
+
+    public DType Accept(TUInt32 type, RowColumnSheet sheet, TitleRow row)
+    {
+        object x = row.Current;
+        if (CheckNull(type.IsNullable, x))
+        {
+            return null;
+        }
+        if (CheckDefault(x))
+        {
+            ThrowIfNonEmpty(row);
+            return DUInt32.Default;
+        }
+        if (!LoadDataUtil.TryParseExcelUInt32FromNumberOrConstAlias(x.ToString(), out var v))
+        {
+            throw new InvalidExcelDataException($"{x} 不是 uint32 类型值");
+        }
+        return DUInt32.ValueOf(v);
+    }
+
+    public DType Accept(TUInt64 type, RowColumnSheet sheet, TitleRow row)
+    {
+        object x = row.Current;
+        if (CheckNull(type.IsNullable, x))
+        {
+            return null;
+        }
+        if (CheckDefault(x))
+        {
+            ThrowIfNonEmpty(row);
+            return DUInt64.Default;
+        }
+        if (!LoadDataUtil.TryParseExcelUInt64FromNumberOrConstAlias(x.ToString(), out var v))
+        {
+            throw new InvalidExcelDataException($"{x} 不是 uint64 类型值");
+        }
+        return DUInt64.ValueOf(v);
+    }
+
 }

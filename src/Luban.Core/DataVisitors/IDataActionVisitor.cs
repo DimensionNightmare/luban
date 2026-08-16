@@ -53,6 +53,10 @@ public interface IDataActionVisitor<T>
     void Accept(DSet type, T x);
 
     void Accept(DMap type, T x);
+
+    void Accept(DUInt32 type, T x);
+
+    void Accept(DUInt64 type, T x);
 }
 
 public interface IDataActionVisitor<T1, T2>
@@ -86,4 +90,8 @@ public interface IDataActionVisitor<T1, T2>
     void Accept(DSet type, T1 x, T2 y);
 
     void Accept(DMap type, T1 x, T2 y);
+
+    void Accept(DUInt32 type, T1 x, T2 y);
+
+    void Accept(DUInt64 type, T1 x, T2 y);
 }

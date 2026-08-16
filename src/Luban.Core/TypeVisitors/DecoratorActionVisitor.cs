@@ -101,6 +101,16 @@ public abstract class DecoratorActionVisitor<T> : ITypeActionVisitor<T>
         DoAccept(type, x);
     }
 
+
+    public virtual void Accept(TUInt32 type, T x)
+    {
+        DoAccept(type, x);
+    }
+
+    public virtual void Accept(TUInt64 type, T x)
+    {
+        DoAccept(type, x);
+    }
 }
 
 public abstract class DecoratorActionVisitor<T1, T2> : ITypeActionVisitor<T1, T2>
@@ -179,6 +189,16 @@ public abstract class DecoratorActionVisitor<T1, T2> : ITypeActionVisitor<T1, T2
     }
 
     public virtual void Accept(TMap type, T1 x, T2 y)
+    {
+        DoAccept(type, x, y);
+    }
+
+    public virtual void Accept(TUInt32 type, T1 x, T2 y)
+    {
+        DoAccept(type, x, y);
+    }
+
+    public virtual void Accept(TUInt64 type, T1 x, T2 y)
     {
         DoAccept(type, x, y);
     }

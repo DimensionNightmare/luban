@@ -121,4 +121,14 @@ class RefTypeVisitor : ITypeActionVisitor<Dictionary<string, DefTypeBase>>
         type.KeyType.Apply(this, x);
         type.ValueType.Apply(this, x);
     }
+
+    public void Accept(TUInt32 type, Dictionary<string, DefTypeBase> x)
+    {
+
+    }
+
+    public void Accept(TUInt64 type, Dictionary<string, DefTypeBase> x)
+    {
+
+    }
 }

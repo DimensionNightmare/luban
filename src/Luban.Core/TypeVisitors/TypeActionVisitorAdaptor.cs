@@ -98,4 +98,12 @@ public abstract class TypeActionVisitorAdaptor<T> : ITypeActionVisitor<T>
     {
 
     }
+
+    public virtual void Accept(TUInt32 type, T x)
+    {
+    }
+
+    public virtual void Accept(TUInt64 type, T x)
+    {
+    }
 }

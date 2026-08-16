@@ -104,4 +104,14 @@ public class ProtobufWireTypeVisitor : ITypeFuncVisitor<WireFormat.WireType>
         //return WireFormat.WireType.LengthDelimited;
         throw new Exception("not support multi-dimension map wire type");
     }
+
+    public WireFormat.WireType Accept(TUInt32 type)
+    {
+        return WireFormat.WireType.Varint;
+    }
+
+    public WireFormat.WireType Accept(TUInt64 type)
+    {
+        return WireFormat.WireType.Varint;
+    }
 }

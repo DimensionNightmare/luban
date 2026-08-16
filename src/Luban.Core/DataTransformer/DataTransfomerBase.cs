@@ -219,4 +219,14 @@ public abstract class DataTransfomerBase : IDataTransformer, IDataFuncVisitor2<D
         }
         return new DMap(data.Type, newDatas);
     }
+
+    DType IDataFuncVisitor2<DType>.Accept(DUInt32 data, TType type)
+    {
+        return data;
+    }
+
+    DType IDataFuncVisitor2<DType>.Accept(DUInt64 data, TType type)
+    {
+        return data;
+    }
 }

@@ -129,4 +129,15 @@ public class JsonUnderlyingDeserializeVisitor : ITypeFuncVisitor<string, string,
     {
         return $"{fieldName} = {jsonVarName}";
     }
+
+    public string Accept(TUInt32 type, string jsonVarName, string fieldName, int depth)
+    {
+        return $"{StringUtil.RepeatSpaceAsTab(depth)}{fieldName} = {jsonVarName}";
+    }
+
+    public string Accept(TUInt64 type, string jsonVarName, string fieldName, int depth)
+    {
+        return $"{StringUtil.RepeatSpaceAsTab(depth)}{fieldName} = {jsonVarName}";
+    }
+
 }

@@ -339,4 +339,32 @@ class ExcelStreamDataCreator : ITypeFuncVisitor<ExcelStream, DType>
         }
         return new DMap(type, datas);
     }
+
+    public DType Accept(TUInt32 type, ExcelStream x)
+    {
+        var d = x.Read();
+        if (CheckNull(type.IsNullable, d))
+        {
+            return null;
+        }
+        if (!uint.TryParse(d.ToString(), out var v))
+        {
+            throw new InvalidExcelDataException($"{d} 不是 uint 类型值");
+        }
+        return DUInt32.ValueOf(v);
+    }
+
+    public DType Accept(TUInt64 type, ExcelStream x)
+    {
+        var d = x.Read();
+        if (CheckNull(type.IsNullable, d))
+        {
+            return null;
+        }
+        if (!ulong.TryParse(d.ToString(), out var v))
+        {
+            throw new InvalidExcelDataException($"{d} 不是 ulong 类型值");
+        }
+        return DUInt64.ValueOf(v);
+    }
 }

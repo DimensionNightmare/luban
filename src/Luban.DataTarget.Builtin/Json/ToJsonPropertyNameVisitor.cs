@@ -101,4 +101,14 @@ public class ToJsonPropertyNameVisitor : IDataFuncVisitor<string>
     {
         throw new NotSupportedException();
     }
+
+    public string Accept(DUInt32 type)
+    {
+        return type.Value.ToString();
+    }
+
+    public string Accept(DUInt64 type)
+    {
+        return type.Value.ToString();
+    }
 }

@@ -247,4 +247,14 @@ class LuaDataCreator : ITypeFuncVisitor<object, DefAssembly, DType>
     {
         return DataUtil.CreateDateTime(x.ToString());
     }
+
+    public DType Accept(TUInt32 type, object x, DefAssembly ass)
+    {
+        return DUInt32.ValueOf((uint)x);
+    }
+
+    public DType Accept(TUInt64 type, object x, DefAssembly ass)
+    {
+        return DUInt64.ValueOf((ulong)x);
+    }
 }

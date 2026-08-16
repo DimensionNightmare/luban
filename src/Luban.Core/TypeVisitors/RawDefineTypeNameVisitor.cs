@@ -100,4 +100,14 @@ public class RawDefineTypeNameVisitor : ITypeFuncVisitor<string>
     {
         return $"map,{type.KeyType.Apply(this)},{type.ValueType.Apply(this)}";
     }
+
+    public string Accept(TUInt32 type)
+    {
+        return "uint32";
+    }
+
+    public string Accept(TUInt64 type)
+    {
+        return "uint64";
+    }
 }

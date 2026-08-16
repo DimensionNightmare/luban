@@ -416,6 +416,10 @@ public class DefAssembly
             case "time":
             case "datetime":
                 return TDateTime.Create(nullable, tags);
+            case "uint32":
+                return TUInt32.Create(nullable, tags);
+            case "uint64":
+                return TUInt64.Create(nullable, tags);
             default:
             {
                 var dtype = GetDefTType(module, type, nullable, tags);

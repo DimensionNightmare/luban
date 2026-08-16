@@ -84,4 +84,14 @@ public abstract class ToLiteralVisitorBase : IDataFuncVisitor<string>
     public abstract string Accept(DSet type);
 
     public abstract string Accept(DMap type);
+
+    public virtual string Accept(DUInt32 type)
+    {
+        return type.Value.ToString();
+    }
+
+    public virtual string Accept(DUInt64 type)
+    {
+        return type.Value.ToString();
+    }
 }

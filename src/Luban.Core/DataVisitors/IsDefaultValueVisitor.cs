@@ -100,4 +100,14 @@ public class IsDefaultValueVisitor : IDataFuncVisitor<bool>
     {
         return false;
     }
+
+    public bool Accept(DUInt32 type)
+    {
+        return type.Value == 0;
+    }
+
+    public bool Accept(DUInt64 type)
+    {
+        return type.Value == 0;
+    }
 }

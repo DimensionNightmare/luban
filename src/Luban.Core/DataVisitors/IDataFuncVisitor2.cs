@@ -54,6 +54,10 @@ public interface IDataFuncVisitor2<TR>
     TR Accept(DSet data, TType type);
 
     TR Accept(DMap data, TType type);
+
+    TR Accept(DUInt32 data, TType type);
+
+    TR Accept(DUInt64 data, TType type);
 }
 
 public interface IDataFuncVisitor2<T, TR>
@@ -87,6 +91,10 @@ public interface IDataFuncVisitor2<T, TR>
     TR Accept(DSet data, TType type, T x);
 
     TR Accept(DMap data, TType type, T x);
+
+    TR Accept(DUInt32 data, TType type, T x);
+
+    TR Accept(DUInt64 data, TType type, T x);
 }
 
 public interface IDataFuncVisitor2<T1, T2, TR>
@@ -119,5 +127,9 @@ public interface IDataFuncVisitor2<T1, T2, TR>
     TR Accept(DSet data, TType type, T1 x, T2 y);
 
     TR Accept(DMap data, TType type, T1 x, T2 y);
+
+    TR Accept(DUInt32 data, TType type, T1 x, T2 y);
+
+    TR Accept(DUInt64 data, TType type, T1 x, T2 y);
 }
 

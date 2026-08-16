@@ -210,4 +210,14 @@ public class JsonDataCreator : ITypeFuncVisitor<JsonElement, DefAssembly, DType>
     {
         return DataUtil.CreateDateTime(x.GetString());
     }
+
+    public DType Accept(TUInt32 type, JsonElement x, DefAssembly ass)
+    {
+        return DUInt32.ValueOf(x.GetUInt32());
+    }
+
+    public DType Accept(TUInt64 type, JsonElement x, DefAssembly ass)
+    {
+        return DUInt64.ValueOf(x.GetUInt64());
+    }
 }

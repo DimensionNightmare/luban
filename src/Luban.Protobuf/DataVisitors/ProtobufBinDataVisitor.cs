@@ -251,4 +251,14 @@ public class ProtobufBinDataVisitor : IDataActionVisitor<CodedOutputStream>
     {
         throw new NotSupportedException();
     }
+
+    public void Accept(DUInt32 type, CodedOutputStream x)
+    {
+        x.WriteUInt32(type.Value);
+    }
+
+    public void Accept(DUInt64 type, CodedOutputStream x)
+    {
+        x.WriteUInt64(type.Value);
+    }
 }

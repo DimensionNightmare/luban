@@ -138,4 +138,14 @@ public class ResDataVisitor : IDataActionVisitor<TType, List<ResourceInfo>>
             v.Apply(this, mtype.ValueType, y);
         }
     }
+
+    public void Accept(DUInt32 type, TType x, List<ResourceInfo> y)
+    {
+
+    }
+
+    public void Accept(DUInt64 type, TType x, List<ResourceInfo> y)
+    {
+
+    }
 }

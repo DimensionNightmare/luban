@@ -149,4 +149,15 @@ public class JsonDataVisitor : IDataActionVisitor<Utf8JsonWriter>
         }
         x.WriteEndArray();
     }
+
+    public void Accept(DUInt32 type, Utf8JsonWriter x)
+    {
+        x.WriteNumberValue(type.Value);
+    }
+
+    public void Accept(DUInt64 type, Utf8JsonWriter x)
+    {
+        x.WriteNumberValue(type.Value);
+    }
+
 }

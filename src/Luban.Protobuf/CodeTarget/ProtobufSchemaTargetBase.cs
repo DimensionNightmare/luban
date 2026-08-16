@@ -21,6 +21,7 @@
 using Luban.CodeFormat;
 using Luban.CodeTarget;
 using Luban.Protobuf.TemplateExtensions;
+using NLog.Targets;
 using Scriban.Runtime;
 
 namespace Luban.Protobuf.CodeTarget;
@@ -56,14 +57,19 @@ public abstract class ProtobufSchemaTargetBase : AllInOneTemplateCodeTargetBase
         var tplCtx = CreateTemplateContext(template);
         tplCtx.PushGlobal(new ProtobufCommonTemplateExtension());
         OnCreateTemplateContext(tplCtx);
+
+        var filter_beans = ctx.ExportBeans.Where(b => b.Groups.Any(ctx.Target.Groups.Contains)).ToList();
+
+        var filter_enums = ctx.ExportEnums.Where(e => e.Groups.Any(ctx.Target.Groups.Contains)).ToList();
+
         var extraEnvs = new ScriptObject
         {
             { "__ctx", ctx},
             { "__name", ctx.Target.Manager},
             { "__namespace", ctx.Target.TopModule},
             { "__tables", ctx.ExportTables},
-            { "__beans", ctx.ExportBeans},
-            { "__enums", ctx.ExportEnums},
+            { "__beans", filter_beans},
+            { "__enums", filter_enums},
             { "__code_style", CodeStyle},
             { "__syntax", Syntax},
         };

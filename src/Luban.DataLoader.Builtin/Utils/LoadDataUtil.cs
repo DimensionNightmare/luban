@@ -393,4 +393,42 @@ static class LoadDataUtil
     //    data.Apply(VisitorToString.Ins, s);
     //    return s.ToString();
     //}
+
+    public static bool TryParseExcelUInt32FromNumberOrConstAlias(string s, out uint value)
+    {
+        s = s.Trim();
+        if (s.StartsWith("0x") || s.StartsWith("0X"))
+        {
+            return uint.TryParse(s.Substring(2), System.Globalization.NumberStyles.HexNumber, null, out value);
+        }
+        if (uint.TryParse(s, out value))
+        {
+            return true;
+        }
+        DefAssembly assembly = GenerationContext.Current.Assembly;
+        if (assembly.TryGetConstAlias(s, out var constValue) && uint.TryParse(constValue, out value))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public static bool TryParseExcelUInt64FromNumberOrConstAlias(string s, out ulong value)
+    {
+        s = s.Trim();
+        if (s.StartsWith("0x") || s.StartsWith("0X"))
+        {
+            return ulong.TryParse(s.Substring(2), System.Globalization.NumberStyles.HexNumber, null, out value);
+        }
+        if (ulong.TryParse(s, out value))
+        {
+            return true;
+        }
+        DefAssembly assembly = GenerationContext.Current.Assembly;
+        if (assembly.TryGetConstAlias(s, out var constValue) && ulong.TryParse(constValue, out value))
+        {
+            return true;
+        }
+        return false;
+    }
 }

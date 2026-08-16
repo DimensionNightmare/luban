@@ -150,4 +150,14 @@ public class BinaryDataVisitor : IDataActionVisitor<ByteBuf>
             e.Value.Apply(this, x);
         }
     }
+
+    public void Accept(DUInt32 type, ByteBuf x)
+    {
+        x.WriteUInt32(type.Value);
+    }
+
+    public void Accept(DUInt64 type, ByteBuf x)
+    {
+        x.WriteUInt64(type.Value);
+    }
 }

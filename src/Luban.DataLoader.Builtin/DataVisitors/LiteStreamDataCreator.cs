@@ -293,4 +293,33 @@ class LiteStreamDataCreator : ITypeFuncVisitor<LiteStream, DType>
         stream.ReadStructOrCollectionEnd();
         return new DMap(type, datas);
     }
+
+    public DType Accept(TUInt32 type, LiteStream x)
+    {
+        string d = x.ReadData();
+        if (CheckNull(type.IsNullable, d))
+        {
+            return null;
+        }
+        if (!LoadDataUtil.TryParseExcelUInt32FromNumberOrConstAlias(d, out uint v))
+        {
+            throw new InvalidExcelDataException($"{d} 不是 uint 类型值");
+        }
+        return DUInt32.ValueOf(v);
+    }
+
+    public DType Accept(TUInt64 type, LiteStream x)
+    {
+        string d = x.ReadData();
+        if (CheckNull(type.IsNullable, d))
+        {
+            return null;
+        }
+        if (!LoadDataUtil.TryParseExcelUInt64FromNumberOrConstAlias(d, out ulong v))
+        {
+            throw new InvalidExcelDataException($"{d} 不是 ulong 类型值");
+        }
+        return DUInt64.ValueOf(v);
+    }
+
 }

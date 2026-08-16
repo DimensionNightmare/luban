@@ -145,6 +145,16 @@ public class DataActionHelpVisitor2<T> : IDataActionVisitor2<T>
             e.Value.Apply(this, mapType.ValueType, x);
         }
     }
+
+    public void Accept(DUInt32 data, TType type, T x)
+    {
+        _underlyingVisitor.Accept(data, type, x);
+    }
+
+    public void Accept(DUInt64 data, TType type, T x)
+    {
+        _underlyingVisitor.Accept(data, type, x);
+    }
 }
 
 public class DataActionHelpVisitor2<T1, T2> : IDataActionVisitor2<T1, T2>
@@ -266,5 +276,14 @@ public class DataActionHelpVisitor2<T1, T2> : IDataActionVisitor2<T1, T2>
             e.Key.Apply(this, mapType.KeyType, x, y);
             e.Value.Apply(this, mapType.ValueType, x, y);
         }
+    }
+    public void Accept(DUInt32 data, TType type, T1 x, T2 y)
+    {
+        _underlyingVisitor.Accept(data, type, x, y);
+    }
+
+    public void Accept(DUInt64 data, TType type, T1 x, T2 y)
+    {
+        _underlyingVisitor.Accept(data, type, x, y);
     }
 }

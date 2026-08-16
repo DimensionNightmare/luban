@@ -151,4 +151,28 @@ class StringDataCreator : ITypeFuncVisitor<string, DType>
     {
         throw new NotSupportedException();
     }
+
+    public DType Accept(TUInt32 type, string x)
+    {
+        if (uint.TryParse(x, out var v))
+        {
+            return DUInt32.ValueOf(v);
+        }
+        else
+        {
+            throw new Exception($"{x} 不是uint类型");
+        }
+    }
+
+    public DType Accept(TUInt64 type, string x)
+    {
+        if (ulong.TryParse(x, out var v))
+        {
+            return DUInt64.ValueOf(v);
+        }
+        else
+        {
+            throw new Exception($"{x} 不是ulong类型");
+        }
+    }
 }

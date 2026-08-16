@@ -158,4 +158,14 @@ public class YamlDataVisitor : IDataFuncVisitor<YamlNode>
         }
         return seqNode;
     }
+
+    public YamlNode Accept(DUInt32 type)
+    {
+        return ToPlainNode(type.Value.ToString());
+    }
+
+    public YamlNode Accept(DUInt64 type)
+    {
+        return ToPlainNode(type.Value.ToString());
+    }
 }
