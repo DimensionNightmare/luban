@@ -42,10 +42,34 @@ public class Protobuf2BinDataTarget : DataTargetBase
         cos.Flush();
     }
 
+    public void WriteMap(DefTable table, List<Record> datas, MemoryStream x)
+    {
+        var cos = new CodedOutputStream(x);
+        var kType = table.IndexField.CType.Apply(ProtobufWireTypeVisitor.Ins);
+        var vType = datas[0].Data.TType.Apply(ProtobufWireTypeVisitor.Ins);
+
+        var ms = new MemoryStream();
+        foreach (var d in datas)
+        {
+            cos.WriteTag(1, WireFormat.WireType.LengthDelimited);
+            ms.Position = 0;
+            ms.SetLength(0);
+            var temp = new CodedOutputStream(ms);
+            temp.WriteTag(1, kType);
+            d.Data.GetField(table.Index).Apply(ProtobufBinDataVisitor.Ins, temp);
+            temp.WriteTag(2, vType);
+            d.Data.Apply(ProtobufBinDataVisitor.Ins, temp);
+            temp.Flush();
+            ms.Position = 0;
+            cos.WriteBytes(ByteString.FromStream(ms));
+        }
+        cos.Flush();
+    }
+
     public override OutputFile ExportTable(DefTable table, List<Record> records)
     {
         var ss = new MemoryStream();
-        WriteList(table, records, ss);
+        WriteMap(table, records, ss);
         ss.Flush();
         return CreateOutputFile($"{table.OutputDataFile}.{OutputFileExt}", DataUtil.StreamToBytes(ss));
     }
